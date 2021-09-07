@@ -1,0 +1,16 @@
+.history-page {
+  min-height: calc(100vh - 56px);
+  background-color: #e7e9eb;
+}
+
+.history-wrapper {
+  max-width: 1000px;
+  margin: auto;
+  background-color: #fff;
+  padding: 50px 20px;
+}
+
+.history-image {
+  height: 200px;
+  width: 200px;
+}

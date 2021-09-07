@@ -1,0 +1,11 @@
+.new-page {
+  min-height: 100vh;
+  background-color: #e7e9eb;
+}
+
+.new-wrapper {
+  max-width: 1000px;
+  margin: auto;
+  background-color: #fff;
+  padding: 50px 20px;
+}

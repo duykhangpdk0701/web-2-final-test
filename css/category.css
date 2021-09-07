@@ -1,0 +1,27 @@
+.category-page {
+  min-height: calc(100vh - 56px);
+  background-color: #e7e9eb;
+}
+
+.category-wrapper {
+  max-width: 1000px;
+  margin: auto;
+  background-color: #fff;
+  display: flex;
+  padding: 50px 20px;
+}
+
+.category-form {
+  flex-basis: 35%;
+  padding-right: 40px;
+}
+
+.category-info {
+  flex-basis: 65%;
+}
+
+.long-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
