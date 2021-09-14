@@ -14,11 +14,19 @@ if (!$listVegetable->isAvailable($item)) {
   exit();
 }
 
+foreach (array_count_values($_SESSION["cart"]) as $key => $value) {
+  echo "$key => $value <br/>";
+  if($item  == $key){
+    $listVegetable->getByID($key)["Amount"];
+    if($value > $listVegetable){
+      header("location: ../vegetable/index.php?error=outOfStock");
+      exit();
+    }
+  }
+}
+
 array_push($_SESSION["cart"], $item);
 
 
-foreach (array_count_values($_SESSION["cart"]) as $key => $value) {
-  echo "$key => $value <br/>";
-}
 
 header("location: ../vegetable/index.php?error=added");

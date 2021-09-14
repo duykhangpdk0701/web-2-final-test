@@ -48,12 +48,11 @@ class Vegetable
     }
   }
 
-  public function reducerAmount($vegetableID)
+  public function reducerAmount($vegetableID , $amountReduce)
   {
-    $vegetableAmount = $this->getByID($vegetableID)["Amount"] - 1;
+    $vegetableAmount =(int)$this->getByID($vegetableID)["Amount"] - (int)$amountReduce;
     include __DIR__ .  "/../connection.php";
     $sql = "UPDATE `vegetable` SET `Amount` = $vegetableAmount  WHERE `VegetableID` = $vegetableID";
-    echo $sql;
     if ($conn->query($sql) === TRUE) {
       return true;
     } else {

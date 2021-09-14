@@ -13,6 +13,11 @@
 <body>
   <?php
   include __DIR__ . "/../helper/menuChild.php";
+  if (isset($_GET["error"])) {
+    if ($_GET["error"] == "bought") {
+      echo '<script>alert("Đã mua sản phẩm")</script>';
+    }
+  }
   ?>
   <section class="history-page">
     <div class="history-wrapper">

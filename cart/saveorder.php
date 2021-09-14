@@ -43,4 +43,4 @@ foreach ($listVegetableIDPost as $key => $value) {
 $listOrder = new Order();
 $listOrder->addOrder($order, $orderDetail);
 
-header("location: ../vegetable/index.php?error=bought");
+header("location: ../cart/history.php?error=bought");

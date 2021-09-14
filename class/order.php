@@ -77,9 +77,9 @@ class Order
     $reloadListID = new Order();
     $lastOrderID = ($reloadListID->getAll())[count($reloadListID->getAll()) - 1]["OrderID"];
     $sql = "INSERT INTO `orderdetail`(`OrderID`, `VegetableID`, `Quantity`, `Price`) VALUES (?,?,?,?)";
-    $stmt = $conn->prepare(($sql));
-    $stmt->bind_param('ssss', $lastOrderID, $detail["VegetableID"], $detail["Quantity"], $detail["Price"]);
-    $stmt->execute();
+    $stmt = $conn->prepare(($sql)) or die("stmt prepare fail");
+    $stmt->bind_param('ssss', $lastOrderID, $detail["VegetableID"], $detail["Quantity"], $detail["Price"]) or die("bind fail");
+    $stmt->execute() or die("execuse fail");
 
     $stmt->close();
     $conn->close();
@@ -103,18 +103,19 @@ class Order
 
   public function addOrder($order, $detail)
   {
-    $_SESSION["cart"] = [];
-
     $this->addOrderChild($order);
     include __DIR__ . "/../class/vegetable.php";
     $listVegetable = new Vegetable();
 
     foreach ($detail as $key => $value) {
-      if (!$listVegetable->reducerAmount($value["VegetableID"])) {
+      if (!$listVegetable->reducerAmount($value["VegetableID"], $value["Quantity"])) {
         header("location: ../vegetable/index.php?error=overAmount");
+        $_SESSION["cart"] = [];
         exit();
       }
       $this->addOrderDetail($value);
     }
+    $_SESSION["cart"] = [];
   }
+
 }
